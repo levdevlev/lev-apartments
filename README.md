@@ -13,25 +13,26 @@ Furnished Apartment Shell
 * Open **qb-interior / client / main.lua** and replace ```CreateApartmentFurnished``` export with this code:
   *
   ```lua
-exports('CreateApartmentFurnished', function(spawn)
+	exports('CreateApartmentFurnished', function(spawn)
 
-    local exit = json.decode('{"x": -0.3308, "y": -2.4607, "z": 1.3895, "h": 273.6090}')
-    
-    local model = "lev_apartment_shell"
-    local obj = CreateShell(spawn, exit, model)
-    if obj and obj[2] then
-		obj[2].clothes = json.decode('{"x": -7.04442, "y": -2.97699, "z": 0.960894, "h": 181.75}')
-		obj[2].stash = json.decode('{"x": -0.221, "y": 0.1859, "z": 1.3895, "h": 90.00}')
-		obj[2].logout = json.decode('{"x": 0.9797, "y": 2.1922, "z": 1.4326, "h": 270}')
-	end
-    if IsNew then
-        SetTimeout(750, function()
-            TriggerEvent('qb-clothes:client:CreateFirstCharacter')
-            IsNew = false
-        end)
-    end
-    return { obj[1], obj[2] }
-end)
+	    local exit = json.decode('{"x": -0.3308, "y": -2.4607, "z": 1.3895, "h": 273.6090}')
+
+	    local model = "lev_apartment_shell"
+	    local obj = CreateShell(spawn, exit, model)
+	    if obj and obj[2] then
+			obj[2].clothes = json.decode('{"x": -7.04442, "y": -2.97699, "z": 0.960894, "h": 181.75}')
+			obj[2].stash = json.decode('{"x": -0.221, "y": 0.1859, "z": 1.3895, "h": 90.00}')
+			obj[2].logout = json.decode('{"x": 0.9797, "y": 2.1922, "z": 1.4326, "h": 270}')
+		end
+	    if IsNew then
+		SetTimeout(750, function()
+		    TriggerEvent('qb-clothes:client:CreateFirstCharacter')
+		    IsNew = false
+		end)
+	    end
+	    return { obj[1], obj[2] }
+	end)
+	```
   
 ## Optional
 * If you want lighting effect that changes during night and day, go to **qb-apartments / client / main.lua** and find **local function EnterApartment(...)** and replace ```TriggerEvent('qb-weathersync:client:DisableSync')``` with ```TriggerEvent('qb-weathersync:client:EnableSync')```
