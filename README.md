@@ -107,3 +107,28 @@ exports('CreateApartmentFurnished', function(spawn)
     return { obj[1], obj[2] }
 end)
 ```
+
+
+# How to use with PS-Housing
+* Put lev_apartment folder to resources folder (make sure you start it via server.cfg)
+* Open **ps-housing / shared / config.lua** and add code below on ```Config.Shells```
+  *
+```lua
+["Lev Apartment"] = {
+        label = "Lev Apartment",
+        hash = `lev_apartment_shell`,
+        doorOffset = { x = -0.460083, y = -2.334961, z = -1.524574, h = 271.055664, width = 2.0 },
+        stash = {
+            maxweight = 350000, 
+            slots = 12,
+        },
+        imgs = {
+            {
+                url = "https://media.discordapp.net/attachments/1075836266005938216/1135668239083503646/image.png",
+                label = "Entrance and Bedroom",
+            },
+
+        },
+    },
+```
+If you want to use as apartment , you should change the ```Config.Apartments``` shell  to  ```shell = "Lev Apartment"```
