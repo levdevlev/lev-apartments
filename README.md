@@ -132,3 +132,24 @@ end)
     },
 ```
 If you want to use as apartment , you should change the ```Config.Apartments``` shell  to  ```shell = "Lev Apartment"```
+
+
+# How to use with NoLag_Properties
+* Put lev_apartment folder to resources folder (make sure you start it via server.cfg)
+* Open **nolag_properties / custom / shells** and make a new file called LevShells.lua below in the file
+  *
+```lua
+CreateThread(function()
+    local LevShells = {
+        -- Free Apartment Shell by Lev
+
+        {
+            nameTier = `lev_apartment_shell`,
+            offset = vector4(0.089353, -2.67699, 0.760894, 270.76),
+            label = 'Lev Apartment',
+            inventory = { weight = 500000, slots = 40 }
+        },
+    }
+    insertInteriors(LevShells)
+end)
+```
